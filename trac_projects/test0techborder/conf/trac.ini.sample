@@ -1,25 +1,36 @@
 # -*- coding: utf-8 -*-
 
 [account-manager]
-account_changes_notify_addresses = david.regal@techborder.com
+account_changes_notify_addresses = 
+allow_delete_account = True
 authentication_url = 
-force_passwd_change = true
+force_passwd_change = True
+generated_password_length = 8
 hash_method = HtDigestHashMethod
 htdigest_realm = 
 htpasswd_hash_type = crypt
-notify_actions = 
-password_file = /opt/bitnami/apps/trac/users/htpasswd
-password_format = htpasswd
-password_store = HtPasswdStore
-persistent_sessions = true
+login_attempt_max_count = 0
+login_opt_list = False
+notify_actions = []
+# password_file = <inherited>
+# password_format = <inherited>
+# password_store = <inherited>
+persistent_sessions = False
 refresh_passwd = False
-user_lock_max_time = 0
-verify_email = true
+reset_password = True
+user_lock_max_time = 86400
+user_lock_time = 0
+user_lock_time_progression = 1
+username_char_blacklist = :[]
+verify_email = True
 
 [attachment]
 max_size = 262144
 max_zip_size = 2097152
 render_unsafe_content = false
+
+[authz_policy]
+authz_file = 
 
 [browser]
 color_scale = True
@@ -38,51 +49,31 @@ max_diff_bytes = 10000000
 max_diff_files = 0
 wiki_format_messages = true
 
-[childtickets]
-parent.defect.allow_child_tickets = false
-parent.enhancement.allow_child_tickets = True
-parent.enhancement.inherit = component,version,milestone,keywords,client
-parent.enhancement.restrict_child_type = task,defect-or-issue,user-story
-parent.enhancement.table_headers = status,summary,priority,owner,estimatedhours,type
-parent.epic-project.allow_child_tickets = True
-parent.epic-project.inherit = component,version,milestone,keywords,client
-parent.epic-project.restrict_child_type = enhancement,task,defect-or-issue,user-story
-parent.epic-project.table_headers = status,summary,priority,owner,estimatedhours,type
-parent.user-story.allow_child_tickets = True
-parent.user-story.inherit = status,summary,priority,owner,estimatedhours,type
-parent.user-story.restrict_child_type = task,defect-or-issue
-parent.user-story.table_headers = status,summary,priority,owner,estimatedhours,type
-
-[components]
-acct_mgr.* = enabled
-childtickets.* = enabled
-childtickets.childtickets.tracchildticketsmodule = enabled
-clients.action_email.clientactionemail = enabled
-clients.action_zendesk_forum.clientactionzendesk = enabled
-clients.admin.clientadminpanel = enabled
-clients.api.clientssetupparticipant = enabled
-clients.client.clientmodule = enabled
-clients.events.clienteventssystem = disabled
-clients.eventsadmin.clienteventsadminpanel = disabled
-clients.processor.clientwikiprocessor = enabled
-clients.processor.testprocessor = enabled
-clients.summary_milestone.clientmilestonesummary = enabled
-clients.summary_monthlyhours.clientmonthlyhourssummary = enabled
-clients.summary_ticketchanges.clientticketchanges = enabled
-estimationtools.* = enabled
-tracopt.versioncontrol.svn.svn_fs.subversionconnector = enabled
-
 [estimation-tools]
-closed_states = closed,another_state
+closed_states = closed
 estimation_field = estimatedhours
-estimation_suffix = hours
+estimation_suffix = h
 serverside_charts = false
 
+[git]
+cached_repository = false
+git_bin = git
+git_fs_encoding = utf-8
+persistent_cache = false
+# projects_base = <inherited>
+# projects_list = <inherited>
+# projects_url = <inherited>
+shortrev_len = 7
+trac_user_rlookup = false
+use_committer_id = true
+use_committer_time = true
+wikishortrev_len = 40
+
 [header_logo]
-alt = Techborder blue and green logo.
+alt = (please configure the [header_logo] section in trac.ini)
 height = -1
 link = 
-src = site/techborder-logo-200w.png
+src = site/your_project_logo.png
 width = -1
 
 [inherit]
@@ -92,16 +83,20 @@ templates_dir =
 
 [logging]
 log_file = trac.log
-log_level = ERROR
-log_type = file
+# log_format = <inherited>
+log_level = DEBUG
+log_type = none
 
 [milestone]
 stats_provider = DefaultTicketGroupStatsProvider
 
 [mimeviewer]
+enscript_modes = text/x-dylan:dylan:4
+enscript_path = enscript
 max_preview_size = 262144
 mime_map = text/x-dylan:dylan, text/x-idl:ice, text/x-ada:ads:adb
 mime_map_patterns = text/plain:README|INSTALL|COPYING.*
+php_path = php
 pygments_default_style = trac
 pygments_modes = 
 tab_width = 8
@@ -139,11 +134,11 @@ use_tls = false
 [project]
 admin = 
 admin_trac_url = .
-descr = All projects are stored here. Project plans (epic-project), bugs (defect-or-issues) and new features (enhancements or user-story) are kept here.
+descr = My example project
 footer = Visit the Trac open source project at<br /><a href="http://trac.edgewall.org/">http://trac.edgewall.org/</a>
 icon = common/trac.ico
-name = Techborder, LLC
-url = http://techborder.com
+name = My Project
+url = 
 
 [query]
 default_anonymous_query = status!=closed&cc~=$USER
@@ -163,55 +158,39 @@ graph_colors = ['#cc0', '#0c0', '#0cc', '#00c', '#c0c', '#c00']
 stats_provider = DefaultTicketGroupStatsProvider
 
 [search]
+# default_disabled_filters = <inherited>
 min_query_length = 3
 
+[sqlite]
+# extensions = <inherited>
+
+[svn]
+branches = trunk, branches/*
+tags = tags/*
+
 [ticket]
+commit_ticket_update_check_perms = true
+commit_ticket_update_commands.close = close closed closes fix fixed fixes
+commit_ticket_update_commands.refs = addresses re references refs see
+commit_ticket_update_envelope = 
+commit_ticket_update_notify = true
 default_cc = 
 default_component = 
 default_description = 
 default_keywords = 
-default_milestone = iteration-orla-and-2-new
-default_owner = david.regal
-default_priority = minor
+default_milestone = 
+default_owner = < default >
+default_priority = major
 default_resolution = fixed
 default_severity = 
 default_summary = 
-default_type = defect-or-issue
+default_type = defect
 default_version = 
 max_comment_size = 262144
 max_description_size = 262144
 preserve_newlines = default
-restrict_owner = true
+restrict_owner = false
 workflow = ConfigurableTicketWorkflow
-
-[ticket-custom]
-client = text
-client.label = Client
-clientrate = text
-clientrate.label = Rate (Do not use)
-estimatedhours = text
-estimatedhours.label = Remaining Hours
-estimatedhours.value = 0
-parent = text
-parent.format = wiki
-parent.label = Parent ID
-
-[ticket-workflow]
-accept = new,assigned,accepted,reopened -> accepted
-accept.operations = set_owner_to_self
-accept.permissions = TICKET_MODIFY
-leave = * -> *
-leave.default = 1
-leave.operations = leave_status
-reassign = new,assigned,accepted,reopened -> assigned
-reassign.operations = set_owner
-reassign.permissions = TICKET_MODIFY
-reopen = closed -> reopened
-reopen.operations = del_resolution
-reopen.permissions = TICKET_CREATE
-resolve = new,assigned,accepted,reopened -> closed
-resolve.operations = set_resolution
-resolve.permissions = TICKET_MODIFY
 
 [timeline]
 abbreviated_messages = True
@@ -236,11 +215,11 @@ check_auth_ip = false
 database = sqlite:db/trac.db
 debug_sql = False
 default_charset = utf-8
-default_date_format = iso8601
+default_date_format = 
 default_dateinfo_format = relative
 default_handler = WikiModule
 default_language = 
-default_timezone = GMT -7:00
+default_timezone = 
 genshi_cache_size = 128
 htdocs_location = 
 ignore_auth_case = false
@@ -257,6 +236,7 @@ pg_dump_path = pg_dump
 repository_dir = 
 repository_sync_per_request = (default)
 repository_type = svn
+# request_filters = <inherited>
 resizable_textareas = true
 secure_cookies = False
 show_email_addresses = false
