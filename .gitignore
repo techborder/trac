@@ -1,4 +1,5 @@
 **/.htpasswd
+.htpasswd
 **/htpasswd
 target/
 pom.xml.tag
