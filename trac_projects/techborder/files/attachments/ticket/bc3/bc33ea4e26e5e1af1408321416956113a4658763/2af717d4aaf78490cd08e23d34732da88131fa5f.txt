@@ -1,0 +1,100 @@
+<h2>SHAC Membership Application</h2>
+
+<h6>About You</h6>
+
+Name
+<input type="First" placeholder="First">
+
+<input type="Last" placeholder="Last">
+
+Today's Date
+<input type="Date" placeholder="MM/DD/YY">
+
+Mailing Address
+<input type="Address" placeholder="Street">
+
+<input type="City" placeholder="City">
+
+<input type="State" placeholder="State">
+
+<input type="Zip Code" placeholder="Zip Code">
+
+Phone Number
+<input type="Phone Number" placeholder="(xxx) xxx-xxxx">
+
+Date of Birth
+<input type="Date" placeholder="MM/DD/YY">
+
+<p>Member must be 18 years of age (Anyone under 18 must be accompanied by an adult).</p>
+
+<h4>Emergency Contact</h4>
+<div style="border:3px solid black;padding:2em;"
+
+Emergency Contact's Name
+<input type="First" placeholder="First">
+
+<input type="Last" placeholder="Last">
+
+Your Relationship to Emergency Contact
+<form>
+<input type="checkbox" name="Relationship" value="Parent">Parent<br>
+<input type="checkbox" name="Relationship" value="Sibling">Sibling<br>
+<input type="checkbox" name="Relationship" value="Grandparent">Grandparent<br>
+<input type="checkbox" name="Relationship" value="Aunt/Uncle">Aunt or Uncle<br>
+<input type="checkbox" name="Relationship" value="Other">Other (specify below)<br>
+
+
+Other: <input type="text" placeholder="">
+</form>
+
+
+Emergency Contact's Phone Number
+<input type="Phone Number" placeholder="(xxx) xxx-xxxx">
+
+Emergency Contact's Mailing Address
+<input type="Address" placeholder="Street">
+
+<input type="City" placeholder="City">
+
+<input type="State" placeholder="State">
+
+<input type="Zip Code" placeholder="Zip Code">
+</div>
+
+<p>       </p>
+Member’s Transportation to and from SHAC will usually be:
+
+<input type "Name" placeholder="Name">
+
+<input type="Phone Number" placeholder="(xxx) xxx-xxxx">
+
+List any allergies or physical limitations:
+
+
+<input type= echo "textarea">
+
+List interests and hobbies:
+
+
+<input type= echo "textarea">
+
+<p2>Can you follow the “Rules of Conduct” safely and independently?</p2><br />
+
+Yes: <input type="checkbox" value="0" name="agree">
+No:  <input type="checkbox" value="1" name="disagree">
+
+If you answered no, who will be assisting you?
+
+<input type="Name" placeholder="Name">
+
+<input type="Phone Number" placeholder="(xxx) xxx-xxxx">
+
+
+<div style="border:3px solid black;padding:1em;"
+<p2>By submitting, I agree that all info entered was done accurately & truthfully. In participating in the SHAC program, I accept responsibility for, and assume risk of any and all damages to my person which may arise directly or indirectly as a result of my participation in the program. I agree to hold the SHAC volunteers, instructors and site free and blameless from any liability. I have read or have had the club policies and rules of conduct read to me and I accept full responsibility for my participation.</p2><br />
+</div>
+
+I accept: <input type="checkbox" value="0" name="agree">
+
+<input type="submit" value="Submit form">
+</form>
