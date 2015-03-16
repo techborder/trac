@@ -1,0 +1,72 @@
+##
+## deflector.map
+##
+## referer --> redirect target
+
+# Test-Debug: https://nomos.local/wings/devdave/menu.php -
+http://*darodar.com -
+http://*backgroundpictures.net -
+http://*embedle.com -
+http://*extener.com -
+http://*fbfreegifts.com -
+http://*feedouble.com -
+http://*feedouble.net -
+http://*joinandplay.me -
+http://*joingames.org -
+http://*kambasoft.com -
+http://*musicprojectfoundation.com -
+http://*myprintscreen.com -
+http://*openfrost.com -
+http://*openmediasoft.com -
+http://*savetubevideo.com -
+http://*semalt.com -
+http://*softomix.com -
+http://*softomix.net -
+http://*softomix.ru -
+http://*soundfrost.org -
+http://*srecorder.com -
+http://*vapmedia.org -
+http://*videofrost.com -
+http://*videofrost.net -
+http://*youtubedownload.org -
+http://*zazagames.org -
+http://*buttons-for-website.com -
+http://*darodar.com -
+http://*7makemoneyonline.com -
+
+
+
+
+
+RewriteMap hosts-deny txt:~/www/etc/hosts.deny
+RewriteCond ${hosts-deny:%{REMOTE_ADDR}|NOT-FOUND} !=NOT-FOUND [OR]
+RewriteCond ${hosts-deny:%{REMOTE_HOST}|NOT-FOUND} !=NOT-FOUND
+RewriteRule ^ - [F]
+
+Denying Hosts in a Blacklist
+Description:
+We wish to maintain a blacklist of hosts, rather like hosts.deny, and have those hosts blocked from accessing our server.
+
+Solution:
+RewriteEngine on
+RewriteMap hosts-deny txt:/path/to/hosts.deny
+RewriteCond ${hosts-deny:%{REMOTE_ADDR}|NOT-FOUND} !=NOT-FOUND [OR]
+RewriteCond ${hosts-deny:%{REMOTE_HOST}|NOT-FOUND} !=NOT-FOUND
+RewriteRule ^ - [F]
+##
+## hosts.deny
+##
+## ATTENTION! This is a map, not a list, even when we treat it as such.
+## mod_rewrite parses it for key/value pairs, so at least a
+## dummy value "-" must be present for each entry.
+##
+
+193.102.180.41 -
+bsdti1.sdm.de -
+192.76.162.40 -
+
+Discussion:
+The second RewriteCond assumes that you have HostNameLookups turned on, so that client IP addresses will be resolved. If that's not the case, you should drop the second RewriteCond, and drop the [OR] flag from the first RewriteCond.
+
+
+http://httpd.apache.org/docs/2.2/rewrite/access.html
